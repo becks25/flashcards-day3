@@ -50,6 +50,10 @@
     margin-right: 2%;
     cursor: pointer;
     line-height: 1.3em; }
+
+    .border-on-hover{
+    border: 2px solid black !important;
+    }
     .flash-card .flash-card-answer:last-child {
       margin-right: 0; }
 

@@ -33,7 +33,6 @@ app.use(function (req, res, next) {
 });
 
 app.get('/cards', function (req, res) {
-
     var modelParams = {};
 
     if (req.query.category) {

@@ -2,13 +2,17 @@ app.controller('MainController', function ($scope, FlashCardsFactory, $log, Scor
 
   $scope.categories = FlashCardsFactory.categories;
   $scope.selectedCategory;
+  $scope.loading = true;
 
   $scope.getCategoryCards = function (category) {
+    $scope.loading = false;
     FlashCardsFactory.getFlashCards(category).then(function(cards){
+      console.log(cards)
       ScoreFactory.correct = 0;
       ScoreFactory.incorrect = 0;
       $scope.selectedCategory = category;
       $scope.flashCards = cards;
+      $scope.loading = true;
     }).catch(function(err){
       $log.error('error getting cards:', err);
     });

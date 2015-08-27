@@ -14,34 +14,24 @@
         </div>
     </div>
     <div ng-controller="MainController">
+
     	<div class="cats">
         <button ng-repeat="category in categories" class="category-button" ng-click="getCategoryCards(category)" ng-class="{ active: category === selectedCategory }">{{ category }}</button>
         <button class="category-button" ng-click="getCategoryCards()" ng-class="{ active: selectedCategory === undefined }">All</button>
+      
       </div>
-      <div
-    		ng-repeat="flashCard in flashCards | orderBy : 'question'"
-    		class="flash-card">
-    	    <h1>{{ flashCard.question | uppercase }}</h1>
-          <h3>{{ flashCard.category }}</h3>
-    	    <ul class="flash-card-answers">
-    	    	<li
-    	    		ng-repeat="answer in flashCard.answers"
-    	    		class="flash-card-answer"
-    	    		ng-click="answerQuestion(answer, flashCard)">{{ answer.text }}</li>
-    	    </ul>
-    	    <h2
-    	    	class="answer-feedback"
-    	    	ng-class="flashCard.answeredCorrectly ? 'correct' : 'incorrect'"
-    	    	ng-show="flashCard.answered">
-    	        <span ng-show="flashCard.answeredCorrectly">Yeah, you got it right!</span>
-    	        <span ng-show="!flashCard.answeredCorrectly">Nope, you got it wrong.</span>
-    	    </h2>
-    	</div>
+    <loader ng-hide="loading"></loader>
+
+    <flashcard ng-hide="!loading" card="flashCards"></flashcard> 
+
     	<script src="angular.js"></script>
     	<script src="app.js"></script>
     	<script src="/controllers/main.controller.js"></script>
       <script src="/controllers/score.controller.js"></script>
       <script src="/factories/flashcard.factory.js"></script>
       <script src="/factories/score.factory.js"></script>
+      <script src="/directives/loader/loader.js"></script>
+      <script src="/directives/flashcard/flashcard.js"></script>
+      <script src="/directives/border-on-hover/border-on-hover.js"></script>
     </body>
 </html>
